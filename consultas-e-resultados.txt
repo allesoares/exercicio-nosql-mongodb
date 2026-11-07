@@ -1,0 +1,885 @@
+Módulo 24 — MongoDB: consultas e resultados
+MongoDB executando em docker, resultados : 
+
+Banco: exercicio_mongodb
+Collections: Estudantes e Professores
+
+1. Selecione todos os estudantes, ordenando pelo nome em ordem alfabética.
+
+Consulta:
+db.Estudantes.find().collation({ locale: "pt", strength: 2 }).sort({ nome: 1 });
+
+Resultado (15 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ca"
+    },
+    "nome": "Ana Souza",
+    "nota": 9,
+    "curso": [
+      "QA"
+    ],
+    "observacao": "Interesse em testes automatizados.",
+    "dataMatricula": {
+      "$date": "2026-02-02T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cb"
+    },
+    "nome": "Bruno Lima",
+    "nota": 6,
+    "curso": [
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-03T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cc"
+    },
+    "nome": "Carla Santos",
+    "nota": 8,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-04T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cd"
+    },
+    "nome": "Daniel Costa",
+    "nota": 5,
+    "curso": [
+      "SQL"
+    ],
+    "observacao": "Revisar consultas com agrupamento.",
+    "dataMatricula": {
+      "$date": "2026-02-05T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ce"
+    },
+    "nome": "Eduarda Alves",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-06T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cf"
+    },
+    "nome": "Felipe Rocha",
+    "nota": 7,
+    "curso": [
+      "DEV",
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-09T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d0"
+    },
+    "nome": "Gabriela Martins",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-10T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d1"
+    },
+    "nome": "Henrique Oliveira",
+    "nota": 6,
+    "curso": [
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-11T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d2"
+    },
+    "nome": "Isabela Ribeiro",
+    "nota": 9,
+    "curso": [
+      "DEV",
+      "QA"
+    ],
+    "observacao": "Interesse em testes de API.",
+    "dataMatricula": {
+      "$date": "2026-02-12T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d3"
+    },
+    "nome": "Joao Pedro",
+    "nota": 7,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-13T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d4"
+    },
+    "nome": "Larissa Gomes",
+    "nota": 5,
+    "curso": [
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-16T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d5"
+    },
+    "nome": "Marcos Ferreira",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-17T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d6"
+    },
+    "nome": "Pedro Almeida",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-18T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d7"
+    },
+    "nome": "Pedro Pereira",
+    "nota": 6,
+    "curso": [
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-19T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d8"
+    },
+    "nome": "Renata Barros",
+    "nota": 7,
+    "curso": [
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-20T12:00:00Z"
+    }
+  }
+]
+
+2. Selecione todos os estudantes do curso de QA.
+
+Consulta:
+db.Estudantes.find({ curso: "QA" });
+
+Resultado (8 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ca"
+    },
+    "nome": "Ana Souza",
+    "nota": 9,
+    "curso": [
+      "QA"
+    ],
+    "observacao": "Interesse em testes automatizados.",
+    "dataMatricula": {
+      "$date": "2026-02-02T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cc"
+    },
+    "nome": "Carla Santos",
+    "nota": 8,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-04T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ce"
+    },
+    "nome": "Eduarda Alves",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-06T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d0"
+    },
+    "nome": "Gabriela Martins",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-10T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d2"
+    },
+    "nome": "Isabela Ribeiro",
+    "nota": 9,
+    "curso": [
+      "DEV",
+      "QA"
+    ],
+    "observacao": "Interesse em testes de API.",
+    "dataMatricula": {
+      "$date": "2026-02-12T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d3"
+    },
+    "nome": "Joao Pedro",
+    "nota": 7,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-13T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d5"
+    },
+    "nome": "Marcos Ferreira",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-17T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d6"
+    },
+    "nome": "Pedro Almeida",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-18T12:00:00Z"
+    }
+  }
+]
+
+3. Selecione todos os estudantes com nota maior ou igual a 7.
+
+Consulta:
+db.Estudantes.find({ nota: { $gte: 7 } });
+
+Resultado (10 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ca"
+    },
+    "nome": "Ana Souza",
+    "nota": 9,
+    "curso": [
+      "QA"
+    ],
+    "observacao": "Interesse em testes automatizados.",
+    "dataMatricula": {
+      "$date": "2026-02-02T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cc"
+    },
+    "nome": "Carla Santos",
+    "nota": 8,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-04T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ce"
+    },
+    "nome": "Eduarda Alves",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-06T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cf"
+    },
+    "nome": "Felipe Rocha",
+    "nota": 7,
+    "curso": [
+      "DEV",
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-09T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d0"
+    },
+    "nome": "Gabriela Martins",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-10T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d2"
+    },
+    "nome": "Isabela Ribeiro",
+    "nota": 9,
+    "curso": [
+      "DEV",
+      "QA"
+    ],
+    "observacao": "Interesse em testes de API.",
+    "dataMatricula": {
+      "$date": "2026-02-12T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d3"
+    },
+    "nome": "Joao Pedro",
+    "nota": 7,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-13T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d5"
+    },
+    "nome": "Marcos Ferreira",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-17T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d6"
+    },
+    "nome": "Pedro Almeida",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-18T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d8"
+    },
+    "nome": "Renata Barros",
+    "nota": 7,
+    "curso": [
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-20T12:00:00Z"
+    }
+  }
+]
+
+4. Selecione todos os estudantes que possuem a palavra “Pedro” no nome.
+
+Consulta:
+db.Estudantes.find({ nome: { $regex: "\\bPedro\\b", $options: "i" } });
+
+Resultado (3 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d3"
+    },
+    "nome": "Joao Pedro",
+    "nota": 7,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-13T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d6"
+    },
+    "nome": "Pedro Almeida",
+    "nota": 8,
+    "curso": [
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-18T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d7"
+    },
+    "nome": "Pedro Pereira",
+    "nota": 6,
+    "curso": [
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-19T12:00:00Z"
+    }
+  }
+]
+
+5. Selecione todos os estudantes que fazem mais de um curso.
+
+Consulta:
+db.Estudantes.find({ curso: { $type: "array" }, "curso.1": { $exists: true } });
+
+Resultado (7 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cc"
+    },
+    "nome": "Carla Santos",
+    "nota": 8,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-04T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489ce"
+    },
+    "nome": "Eduarda Alves",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-06T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489cf"
+    },
+    "nome": "Felipe Rocha",
+    "nota": 7,
+    "curso": [
+      "DEV",
+      "SQL"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-09T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d2"
+    },
+    "nome": "Isabela Ribeiro",
+    "nota": 9,
+    "curso": [
+      "DEV",
+      "QA"
+    ],
+    "observacao": "Interesse em testes de API.",
+    "dataMatricula": {
+      "$date": "2026-02-12T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d3"
+    },
+    "nome": "Joao Pedro",
+    "nota": 7,
+    "curso": [
+      "SQL",
+      "QA"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-13T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d5"
+    },
+    "nome": "Marcos Ferreira",
+    "nota": 10,
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-17T12:00:00Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d7"
+    },
+    "nome": "Pedro Pereira",
+    "nota": 6,
+    "curso": [
+      "SQL",
+      "DEV"
+    ],
+    "dataMatricula": {
+      "$date": "2026-02-19T12:00:00Z"
+    }
+  }
+]
+
+6. Selecione todos os professores com cargo igual a Professor.
+
+Consulta:
+db.Professores.find({ cargo: "Professor" });
+
+Resultado (5 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d9"
+    },
+    "nome": "Adriana Souza",
+    "curso": [
+      "QA"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489da"
+    },
+    "nome": "Carlos Mendes",
+    "curso": [
+      "SQL",
+      "DEV"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489db"
+    },
+    "nome": "Fernanda Lima",
+    "curso": [
+      "QA",
+      "SQL"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489dc"
+    },
+    "nome": "Lucas Ribeiro",
+    "curso": [
+      "DEV"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489de"
+    },
+    "nome": "Rafael Santos",
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "cargo": "Professor"
+  }
+]
+
+7. Selecione todos os professores que lecionam o curso de QA.
+
+Consulta:
+db.Professores.find({ curso: "QA" });
+
+Resultado (4 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489d9"
+    },
+    "nome": "Adriana Souza",
+    "curso": [
+      "QA"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489db"
+    },
+    "nome": "Fernanda Lima",
+    "curso": [
+      "QA",
+      "SQL"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489dd"
+    },
+    "nome": "Patricia Costa",
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "cargo": "Coordenador"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489de"
+    },
+    "nome": "Rafael Santos",
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "cargo": "Professor"
+  }
+]
+
+8. Selecione todos os professores que lecionam mais de um curso.
+
+Consulta:
+db.Professores.find({ curso: { $type: "array" }, "curso.1": { $exists: true } });
+
+Resultado (4 registros):
+[
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489da"
+    },
+    "nome": "Carlos Mendes",
+    "curso": [
+      "SQL",
+      "DEV"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489db"
+    },
+    "nome": "Fernanda Lima",
+    "curso": [
+      "QA",
+      "SQL"
+    ],
+    "cargo": "Professor"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489dd"
+    },
+    "nome": "Patricia Costa",
+    "curso": [
+      "QA",
+      "SQL",
+      "DEV"
+    ],
+    "cargo": "Coordenador"
+  },
+  {
+    "_id": {
+      "$oid": "6aef70517557788cd68489de"
+    },
+    "nome": "Rafael Santos",
+    "curso": [
+      "QA",
+      "DEV"
+    ],
+    "cargo": "Professor"
+  }
+]
+
+9. Liste apenas o nome e a nota dos estudantes do curso de SQL.
+
+Consulta:
+db.Estudantes.find({ curso: "SQL" }, { _id: 0, nome: 1, nota: 1 });
+
+Resultado (8 registros):
+[
+  {
+    "nome": "Carla Santos",
+    "nota": 8
+  },
+  {
+    "nome": "Daniel Costa",
+    "nota": 5
+  },
+  {
+    "nome": "Eduarda Alves",
+    "nota": 10
+  },
+  {
+    "nome": "Felipe Rocha",
+    "nota": 7
+  },
+  {
+    "nome": "Henrique Oliveira",
+    "nota": 6
+  },
+  {
+    "nome": "Joao Pedro",
+    "nota": 7
+  },
+  {
+    "nome": "Pedro Pereira",
+    "nota": 6
+  },
+  {
+    "nome": "Renata Barros",
+    "nota": 7
+  }
+]
+
+10. Conte quantos estudantes existem por curso.
+
+Consulta:
+db.Estudantes.aggregate([
+  { $unwind: "$curso" },
+  { $group: { _id: "$curso", totalEstudantes: { $sum: 1 } } },
+  { $project: { _id: 0, curso: "$_id", totalEstudantes: 1 } },
+  { $sort: { curso: 1 } }
+]);
+
+Resultado (3 registros):
+[
+  {
+    "totalEstudantes": 7,
+    "curso": "DEV"
+  },
+  {
+    "totalEstudantes": 8,
+    "curso": "QA"
+  },
+  {
+    "totalEstudantes": 8,
+    "curso": "SQL"
+  }
+]
+

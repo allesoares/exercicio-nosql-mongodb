@@ -1,0 +1,52 @@
+Módulo 24 — MongoDB
+
+Preparação:
+Importe estudantes.json e professores.json como arrays JSON nas collections
+Estudantes e Professores, respectivamente, no banco exercicio_mongodb.
+
+use exercicio_mongodb
+
+1. Selecione todos os estudantes, ordenando pelo nome em ordem alfabética.
+Resposta:
+db.Estudantes.find().collation({ locale: "pt", strength: 2 }).sort({ nome: 1 });
+
+2. Selecione todos os estudantes do curso de QA.
+Resposta:
+db.Estudantes.find({ curso: "QA" });
+
+3. Selecione todos os estudantes com nota maior ou igual a 7.
+Resposta:
+db.Estudantes.find({ nota: { $gte: 7 } });
+
+4. Selecione todos os estudantes que possuem a palavra “Pedro” no nome.
+Resposta:
+db.Estudantes.find({ nome: { $regex: "\\bPedro\\b", $options: "i" } });
+
+5. Selecione todos os estudantes que fazem mais de um curso.
+Resposta:
+db.Estudantes.find({ curso: { $type: "array" }, "curso.1": { $exists: true } });
+
+6. Selecione todos os professores com cargo igual a Professor.
+Resposta:
+db.Professores.find({ cargo: "Professor" });
+
+7. Selecione todos os professores que lecionam o curso de QA.
+Resposta:
+db.Professores.find({ curso: "QA" });
+
+8. Selecione todos os professores que lecionam mais de um curso.
+Resposta:
+db.Professores.find({ curso: { $type: "array" }, "curso.1": { $exists: true } });
+
+9. Liste apenas o nome e a nota dos estudantes do curso de SQL.
+Resposta:
+db.Estudantes.find({ curso: "SQL" }, { _id: 0, nome: 1, nota: 1 });
+
+10. Conte quantos estudantes existem por curso.
+Resposta:
+db.Estudantes.aggregate([
+  { $unwind: "$curso" },
+  { $group: { _id: "$curso", totalEstudantes: { $sum: 1 } } },
+  { $project: { _id: 0, curso: "$_id", totalEstudantes: 1 } },
+  { $sort: { curso: 1 } }
+]);

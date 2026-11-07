@@ -1,0 +1,8 @@
+[
+  { "nome": "Adriana Souza", "curso": ["QA"], "cargo": "Professor" },
+  { "nome": "Carlos Mendes", "curso": ["SQL", "DEV"], "cargo": "Professor" },
+  { "nome": "Fernanda Lima", "curso": ["QA", "SQL"], "cargo": "Professor" },
+  { "nome": "Lucas Ribeiro", "curso": ["DEV"], "cargo": "Professor" },
+  { "nome": "Patricia Costa", "curso": ["QA", "SQL", "DEV"], "cargo": "Coordenador" },
+  { "nome": "Rafael Santos", "curso": ["QA", "DEV"], "cargo": "Professor" }
+]

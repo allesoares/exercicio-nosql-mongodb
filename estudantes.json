@@ -1,0 +1,17 @@
+[
+  { "nome": "Ana Souza", "nota": 9, "curso": ["QA"], "observacao": "Interesse em testes automatizados.", "dataMatricula": { "$date": "2026-02-02T12:00:00Z" } },
+  { "nome": "Bruno Lima", "nota": 6, "curso": ["DEV"], "dataMatricula": { "$date": "2026-02-03T12:00:00Z" } },
+  { "nome": "Carla Santos", "nota": 8, "curso": ["SQL", "QA"], "dataMatricula": { "$date": "2026-02-04T12:00:00Z" } },
+  { "nome": "Daniel Costa", "nota": 5, "curso": ["SQL"], "observacao": "Revisar consultas com agrupamento.", "dataMatricula": { "$date": "2026-02-05T12:00:00Z" } },
+  { "nome": "Eduarda Alves", "nota": 10, "curso": ["QA", "SQL", "DEV"], "dataMatricula": { "$date": "2026-02-06T12:00:00Z" } },
+  { "nome": "Felipe Rocha", "nota": 7, "curso": ["DEV", "SQL"], "dataMatricula": { "$date": "2026-02-09T12:00:00Z" } },
+  { "nome": "Gabriela Martins", "nota": 8, "curso": ["QA"], "dataMatricula": { "$date": "2026-02-10T12:00:00Z" } },
+  { "nome": "Henrique Oliveira", "nota": 6, "curso": ["SQL"], "dataMatricula": { "$date": "2026-02-11T12:00:00Z" } },
+  { "nome": "Isabela Ribeiro", "nota": 9, "curso": ["DEV", "QA"], "observacao": "Interesse em testes de API.", "dataMatricula": { "$date": "2026-02-12T12:00:00Z" } },
+  { "nome": "Joao Pedro", "nota": 7, "curso": ["SQL", "QA"], "dataMatricula": { "$date": "2026-02-13T12:00:00Z" } },
+  { "nome": "Larissa Gomes", "nota": 5, "curso": ["DEV"], "dataMatricula": { "$date": "2026-02-16T12:00:00Z" } },
+  { "nome": "Marcos Ferreira", "nota": 10, "curso": ["QA", "DEV"], "dataMatricula": { "$date": "2026-02-17T12:00:00Z" } },
+  { "nome": "Pedro Almeida", "nota": 8, "curso": ["QA"], "dataMatricula": { "$date": "2026-02-18T12:00:00Z" } },
+  { "nome": "Pedro Pereira", "nota": 6, "curso": ["SQL", "DEV"], "dataMatricula": { "$date": "2026-02-19T12:00:00Z" } },
+  { "nome": "Renata Barros", "nota": 7, "curso": ["SQL"], "dataMatricula": { "$date": "2026-02-20T12:00:00Z" } }
+]
